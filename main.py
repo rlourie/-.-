@@ -15,7 +15,8 @@ class Student:
             else:
                 lecturer.grades[course] = [grade]
         else:
-            return 'Ошибка'
+            print("Ошибка")
+            return
 
 
 class Mentor:
@@ -42,17 +43,19 @@ class Reviewer(Mentor):
             return 'Ошибка'
 
 
-best_student = Student('Ruoy', 'Eman', 'your_gender')
-best_student.courses_in_progress += ['Python']
+Alex = Student('Alex', 'Zvezdin', 'M')
+Alex.courses_in_progress += ['Python']
 
-cool_mentor = Reviewer('Some', 'Buddy')
-cool_mentor.courses_attached += ['Python']
+Oleg = Reviewer('Oleg', 'Buligin')
+Oleg.courses_attached += ['Python']
 
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
-cool_mentor.rate_hw(best_student, 'Python', 10)
+Ne_Oleg = Lecturer('Ne_Oleg', 'Ne_Buligin')
+Ne_Oleg.courses_attached += ['Python']
 
-print(best_student.grades)
+Oleg.rate_hw(Alex, 'Python', 10)
+Oleg.rate_hw(Alex, 'Python', 10)
+Oleg.rate_hw(Alex, 'Python', 10)
+Alex.rate_lecture(Ne_Oleg, 'Python', 10)
 
-qwe = Lecturer("d", "ads")
-print(qwe.grades)
+print(Alex.grades)
+print(Ne_Oleg.grades)
