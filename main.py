@@ -86,6 +86,36 @@ class Reviewer(Mentor):
         return result
 
 
+def sr_mark_student(list_students, name_course):
+    q = 0
+    summ = 0
+    for student in list_students:
+        grade_dict = student.grades
+        for key, value in grade_dict.items():
+            if key == name_course:
+                summ += sum(value)
+                q += len(value)
+    if q == 0:
+        return 0
+    else:
+        return summ / q
+
+
+def sr_mark_lecture(list_lecturer, name_course):
+    q = 0
+    summ = 0
+    for lecturer in list_lecturer:
+        grade_dict = lecturer.grades
+        for key, value in grade_dict.items():
+            if key == name_course:
+                summ += sum(value)
+                q += len(value)
+    if q == 0:
+        return 0
+    else:
+        return summ / q
+
+
 Alex = Student('Alex', 'Zvezdin', 'M')
 Alex.courses_in_progress += ['Python', 'SQL']
 Alex.finished_courses += ['Django']
@@ -139,3 +169,8 @@ print()
 
 print(Alex > Artem)
 print(Artemiy > Ne_Oleg)
+
+print()
+
+print(sr_mark_student([Alex, Artem], "Python"))
+print(sr_mark_lecture([Ne_Oleg, Artemiy], "Python"))
