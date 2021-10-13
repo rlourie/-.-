@@ -33,11 +33,20 @@ class Lecturer(Mentor):
         self.sr = 0
 
     def sr_grade(self):
-        pass
+        sum1 = 0
+        q = 0
+        dict = self.grades
+        for _, value in dict.items():
+            sum1 += sum(value)
+            q += 1
+        if q == 0:
+            self.sr = 0
+        else:
+            self.sr = sum1 / q
 
     def __str__(self):
-        self.sr_grade
-        result = f'Имя : {self.name}\nФамилия : {self.surname}\nСредняя оценка за лекции :{self.sr}'
+        self.sr_grade()
+        result = f'Имя : {self.name}\nФамилия : {self.surname}\nСредняя оценка за лекции : {self.sr}'
         return result
 
 
@@ -58,21 +67,21 @@ class Reviewer(Mentor):
 
 
 Alex = Student('Alex', 'Zvezdin', 'M')
-Alex.courses_in_progress += ['Python']
+Alex.courses_in_progress += ['Python', 'SQL']
 
 Oleg = Reviewer('Oleg', 'Buligin')
-Oleg.courses_attached += ['Python']
+Oleg.courses_attached += ['Python', 'SQL']
 
 Ne_Oleg = Lecturer('Ne_Oleg', 'Ne_Buligin')
-Ne_Oleg.courses_attached += ['Python']
+Ne_Oleg.courses_attached += ['Python', 'SQL']
 
 Oleg.rate_hw(Alex, 'Python', 10)
 Oleg.rate_hw(Alex, 'Python', 10)
 Oleg.rate_hw(Alex, 'Python', 10)
 Alex.rate_lecture(Ne_Oleg, 'Python', 10)
-Alex.rate_lecture(Ne_Oleg, 'Python', 10)
-Alex.rate_lecture(Ne_Oleg, 'Python', 10)
+Alex.rate_lecture(Ne_Oleg, 'Python', 9)
+Alex.rate_lecture(Ne_Oleg, 'Python', 6)
+Alex.rate_lecture(Ne_Oleg, 'SQL', 10)
 
 print(Ne_Oleg)
 print(Ne_Oleg.grades)
-Ne_Oleg.sr_grade
