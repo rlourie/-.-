@@ -52,7 +52,7 @@ class Lecturer(Mentor):
         dict = self.grades
         for _, value in dict.items():
             sum1 += sum(value)
-            q += 1
+            q += len(value)
         if q == 0:
             self.sr = 0
         else:
